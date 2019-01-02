@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="5" failures="1" disabled="0" errors="0" timestamp="2018-12-31T21:55:53" time="1.476" name="AllTests">
+  <testsuite name="AnamolyDetectorTest" tests="5" failures="1" disabled="0" errors="0" time="1.476">
+    <testcase name="InitTest" status="run" time="0.271" classname="AnamolyDetectorTest" />
+    <testcase name="SampleSizeThreeTest" status="run" time="0.301" classname="AnamolyDetectorTest" />
+    <testcase name="SampleSizeFiveTest" status="run" time="0.302" classname="AnamolyDetectorTest" />
+    <testcase name="SampleSizeThreeTestRandomly" status="run" time="0.301" classname="AnamolyDetectorTest" />
+    <testcase name="SampleSizeFiveTestRandomly" status="run" time="0.301" classname="AnamolyDetectorTest">
+      <failure message="/home/pawan/catkin_ws/src/VehicleDataReader/test/AnamolyDetectorTest.cpp:110&#x0A;Value of: sampleAnalyzer.AnamolyCount()&#x0A;  Actual: 1&#x0A;Expected: 2" type=""><![CDATA[/home/pawan/catkin_ws/src/VehicleDataReader/test/AnamolyDetectorTest.cpp:110
+Value of: sampleAnalyzer.AnamolyCount()
+  Actual: 1
+Expected: 2]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

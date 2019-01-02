@@ -1,0 +1,7 @@
+\subsubsection usage Usage
+\verbatim
+<node name="VehicleDataReader" pkg="VehicleDataReader" type="VehicleDataReader">
+  <param name="int_param" type="int" value="3" />
+</node>
+\endverbatim
+

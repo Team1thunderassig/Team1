@@ -1,0 +1,9 @@
+uint32 messageId
+float64 vehicleSpeed
+float64 engineSpeed
+bool driverdoor_open
+bool frontPassengerDoor_open
+bool rearLeftDoor_open
+bool rearRightDoor_open
+time FrameTickCountSysReadTime
+
