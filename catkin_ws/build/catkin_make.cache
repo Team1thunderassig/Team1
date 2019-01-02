@@ -1,2 +1,0 @@
-VehicleDataReader
--DCATKIN_DEVEL_PREFIX=/home/pawan/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/pawan/catkin_ws/install -G Unix Makefiles

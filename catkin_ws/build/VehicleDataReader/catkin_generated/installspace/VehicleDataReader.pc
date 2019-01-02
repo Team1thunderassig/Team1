@@ -1,8 +1,0 @@
-prefix=/home/pawan/catkin_ws/install
-
-Name: VehicleDataReader
-Description: Description of VehicleDataReader
-Version: 0.0.0
-Cflags: -I/home/pawan/catkin_ws/install/include
-Libs: -L/home/pawan/catkin_ws/install/lib -lsampleanalyzer
-Requires: roscpp rospy std_msgs

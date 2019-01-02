@@ -55,7 +55,7 @@ int main(int argc, char **argv)
   ros::Rate loop_rate(1);
 
   int count = 0;
-  std::vector<VehicleDataReader::CANMessage> dataList = ReadInput("/home/pawan/Downloads/20180101_1555_22006_ECM_HSC1_FrP00_sync.csv");
+  std::vector<VehicleDataReader::CANMessage> dataList = ReadInput("20180101_1555_22006_ECM_HSC1_FrP00_sync.csv");
   loop_rate.sleep();
   for (VehicleDataReader::CANMessage message : dataList)
   {
