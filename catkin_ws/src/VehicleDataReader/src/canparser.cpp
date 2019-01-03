@@ -51,13 +51,15 @@ int main(int argc, char **argv)
   ros::Publisher canparser_pub = n.advertise<VehicleDataReader::CANMessage>("canparserMessage", 1000);
   ros::Rate loop_rate(1);
   char cwd[2018];
-  char *src_path = getenv("HOME");
-  strcpy (cwd, src_path);
-  strcat(cwd, "/Team1/catkin_ws/share/20180101_1555_22006_ECM_HSC1_FrP00_sync.csv");
-  std::vector<VehicleDataReader::CANMessage> dataList = ReadInput(cwd);
+  char *src_path = getenv("ROS_PACKAGE_PATH");
+  std::string path(getenv("ROS_PACKAGE_PATH"));
+  path.erase(path.find_first_of(":"));
+  path.append("/../share/20180101_1555_22006_ECM_HSC1_FrP00_sync.csv");
+  std::vector<VehicleDataReader::CANMessage> dataList = ReadInput(path.c_str());
   loop_rate.sleep();
   for (VehicleDataReader::CANMessage message : dataList)
   {
+    std::cout << message << std::endl;
     canparser_pub.publish(message);
     ros::spinOnce();
     loop_rate.sleep();
