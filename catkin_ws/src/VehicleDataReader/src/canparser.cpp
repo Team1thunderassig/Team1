@@ -58,8 +58,6 @@ int main(int argc, char **argv)
   loop_rate.sleep();
   for (VehicleDataReader::CANMessage message : dataList)
   {
-    std::cout << "Message: " << message.FrameTickCountSysReadTime << std::endl;
-    std::cout << ++count << std::endl;
     canparser_pub.publish(message);
     ros::spinOnce();
     loop_rate.sleep();
