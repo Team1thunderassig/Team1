@@ -149,6 +149,10 @@ target_link_libraries(anamoly_detector ${catkin_LIBRARIES})
 add_dependencies(anamoly_detector VehicleDataReader_generate_messages_cpp)
 add_dependencies(anamoly_detector VehicleDataReader_gencfg)
 
+add_executable(anamolyTestNode src/testNode.cpp)
+target_link_libraries(anamolyTestNode ${catkin_LIBRARIES})
+add_dependencies(anamolyTestNode VehicleDataReader_generate_messages_cpp)
+
 #catkin_add_gtest(${PROJECT_NAME}-pub-test test/AnamolyDetectorPubTest.cpp)
 #if(TARGET ${PROJECT_NAME}-pub-test)
 #  target_link_libraries(${PROJECT_NAME}-pub-test ${catkin_LIBRARIES})
