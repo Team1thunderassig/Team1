@@ -1,0 +1,6 @@
+<launch>
+   <node name="canlistener" pkg="VehicleDataReader" type="canlistener" args="" respawn="true" output="screen" />
+   <node name="anamoly_detector" pkg="VehicleDataReader" type="anamoly_detector" args="3" respawn="true" />
+   <node name="listenertestx" pkg="VehicleDataReader" type="anamolyTestNode" args="" respawn="true" />
+</launch>
+
