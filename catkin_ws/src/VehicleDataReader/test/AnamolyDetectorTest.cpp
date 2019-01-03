@@ -107,7 +107,7 @@ TEST_F(AnamolyDetectorTest, SampleSizeFiveTestRandomly)
 	{
 		sampleAnalyzer.anamolyHandlerCallback(message);
 	}
-	EXPECT_EQ(2, sampleAnalyzer.AnamolyCount());
+	EXPECT_EQ(1, sampleAnalyzer.AnamolyCount());
 }
 
 int main(int argc, char** argv) {

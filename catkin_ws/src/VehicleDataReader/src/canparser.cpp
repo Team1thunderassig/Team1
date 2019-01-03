@@ -6,16 +6,18 @@
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
 #include <time.h>
+#include <stdlib.h>
 
 std::vector<VehicleDataReader::CANMessage> ReadInput(const char* inputFile)
 {
-	std::ifstream file(inputFile);
- 
+    std::cout << inputFile << std::endl;
+	std::ifstream file(inputFile); 
 	std::vector<VehicleDataReader::CANMessage> dataList;
  	enum data{ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT};
 	std::string line = "";
 	if (file.is_open()) 
 	{
+     	std::cout << "opened the file " << inputFile << std::endl; 
 		while (getline(file, line))
 		{
 			std::vector<std::string> vec;
@@ -32,30 +34,27 @@ std::vector<VehicleDataReader::CANMessage> ReadInput(const char* inputFile)
 			message.frontPassengerDoor_open  = std::stoi (vec[FIVE]);
 			message.rearLeftDoor_open = std::stoi (vec[SIX]);
 			message.rearRightDoor_open = std::stoi (vec[SEVEN]);
-			message.FrameTickCountSysReadTime.fromSec(std::stof(vec[EIGHT]));
-		    
+			message.FrameTickCountSysReadTime.fromSec(std::stof(vec[EIGHT]));		    
 			dataList.push_back(message);
 		}
     }
-
 	file.close();
 	return dataList;
 }
 
 
 int main(int argc, char **argv)
-{
-  
+{ 
   ros::init(argc, argv, "CANParser");
-
   ros::NodeHandle n;
   enum VehicleDataFormat {ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT};
   ros::Publisher canparser_pub = n.advertise<VehicleDataReader::CANMessage>("canparserMessage", 1000);
-
   ros::Rate loop_rate(1);
-
-  int count = 0;
-  std::vector<VehicleDataReader::CANMessage> dataList = ReadInput("20180101_1555_22006_ECM_HSC1_FrP00_sync.csv");
+  char cwd[2018];
+  char *src_path = getenv("HOME");
+  strcpy (cwd, src_path);
+  strcat(cwd, "/Team1/catkin_ws/share/20180101_1555_22006_ECM_HSC1_FrP00_sync.csv");
+  std::vector<VehicleDataReader::CANMessage> dataList = ReadInput(cwd);
   loop_rate.sleep();
   for (VehicleDataReader::CANMessage message : dataList)
   {
@@ -63,11 +62,9 @@ int main(int argc, char **argv)
     std::cout << ++count << std::endl;
     canparser_pub.publish(message);
     ros::spinOnce();
-    //loop_rate.sleep();
+    loop_rate.sleep();
   }
-
   ros::spin();
-
   return 0;
 }
 
